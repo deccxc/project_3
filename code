@@ -1,0 +1,21 @@
+from urllib.request import urlretrieve
+
+URL_PATH = 'https://s3.amazonaws.com/tcmg476/http_access_log'
+LOCAL_FILE = 'local_copy.log'
+total_requests = 0
+year_count = 0
+
+local_file, headers = urlretrieve(URL_PATH, LOCAL_FILE)
+
+#******************************Part 2*****************************************
+
+FILE_NAME = 'path/to/file'
+f = open(LOCAL_FILE)
+
+for line in f:
+    total_requests += 1
+    if '1995' in line:
+        year_count += 1
+
+print(f'The total number if requests in this log file is', total_requests)
+print(f'The total number of requests in 1995 is', year_count)
